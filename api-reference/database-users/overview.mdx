@@ -4,7 +4,11 @@ sidebarTitle: "Overview"
 description: "Manage FalkorDB database users and ACLs on a deployment instance."
 ---
 
+import AclPresetClauses from '/snippets/acl-preset-clauses.mdx';
+
 Database users are the credentials your application uses to connect to a FalkorDB deployment instance. They are separate from the [Omnistrate account users](/api-reference/account/access/list-users) who manage subscriptions and instances.
+
+To manage the same users from the FalkorDB Cloud console instead, see [User Management](/operations/user-management).
 
 <Warning>
   This API is served from a **different host** than the rest of this reference and uses **bearer token** authentication instead of a session cookie.
@@ -48,13 +52,21 @@ Each user has an `acl` string using the Redis ACL syntax: a set of key patterns 
 
 ### Presets
 
-The FalkorDB console offers three presets, all scoped to `~*`:
+The [FalkorDB console](/operations/user-management) offers three presets, all scoped to `~*`:
 
 | Preset | Description |
 | --- | --- |
-| **Read** | Read-only graph access: `+GRAPH.RO_QUERY`, `+GRAPH.EXPLAIN`, `+GRAPH.INFO`, `+GRAPH.LIST`, plus connection and introspection commands. |
-| **Write** | Read plus mutating commands: `+GRAPH.QUERY`, `+GRAPH.DELETE`, `+GRAPH.CONSTRAINT`, `+GRAPH.BULK`, `+GRAPH.COPY`, `+DEL`, `+RENAME`, `+EXPIRE`, and transactions. |
-| **Admin** | Every allowed command, including `+FLUSHALL`, `+MONITOR`, `+BGREWRITEAOF`, `+GRAPH.CONFIG`, and `+MEMORY`. |
+| **Read** | Read-only access: graph reads (`+GRAPH.RO_QUERY`, `+GRAPH.EXPLAIN`, `+GRAPH.INFO`, `+GRAPH.LIST`) plus connection and introspection commands. |
+| **Write** | Everything in **Read**, plus graph mutations (`+GRAPH.QUERY`, `+GRAPH.DELETE`, `+GRAPH.CONSTRAINT`, `+GRAPH.BULK`, `+GRAPH.COPY`, `+GRAPH.PROFILE`, `+GRAPH.UDF`), key mutations (`+DEL`, `+RENAME`, `+EXPIRE`, `+RESTORE`, and similar), and transactions. |
+| **Admin** | Every allowed command. Adds `+FLUSHALL`, `+GRAPH.CONFIG`, `+MEMORY`, `+GRAPH.MEMORY`, `+MONITOR`, `+SLOWLOG`, `+BGREWRITEAOF`, `+MODULE\|LIST`, `+WAIT`, and `+WAITAOF` on top of **Write**. |
+
+<Note>
+  No preset grants `+ACL`, so a database user cannot manage other database users regardless of preset. User management happens through this API or the [FalkorDB console](/operations/user-management).
+</Note>
+
+The API has no preset field — [Create database user](/api-reference/database-users/create) takes a raw `acl` string. To reproduce a preset, send its exact string:
+
+<AclPresetClauses />
 
 ### Allowed commands
 
