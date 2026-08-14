@@ -67,6 +67,7 @@
                 "group": "Operations",
                 "pages": [
                   "operations/export-import",
+                  "operations/upgrading-instances",
                   "operations/user-management",
                   "operations/monitoring-dashboard",
                   "operations/maintenance-windows"
