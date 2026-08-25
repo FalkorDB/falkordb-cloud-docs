@@ -1,16 +1,27 @@
 ---
 title: "Sign in"
-api: "POST https://api.omnistrate.cloud/2022-09-01-00/resource-instance/user/signin"
+api: "POST https://app.falkordb.cloud/api/signin"
 description: "Sign into FalkorDB Cloud and receive session cookies."
 ---
 
-Signs the user in. Send the request with HTTP Basic authentication (`Authorization: Basic <base64(user:password)>`). The response sets two `HttpOnly` cookies that authorize every other endpoint.
+Signs the user in. Send your FalkorDB Cloud credentials as a JSON body. The response sets two `HttpOnly` cookies that authorize every other endpoint.
 
-## Authorization
+## Body
 
-<ParamField header="Authorization" type="string" required>
-  Basic authentication credentials: `Basic <base64(username:password)>`.
+<ParamField body="email" type="string" required>
+  The email address of your FalkorDB Cloud account.
 </ParamField>
+
+<ParamField body="password" type="string" required>
+  The password of your FalkorDB Cloud account.
+</ParamField>
+
+```json
+{
+  "email": "you@example.com",
+  "password": "your-password"
+}
+```
 
 ## Response
 
@@ -40,7 +51,7 @@ Set-Cookie: omnistrate_refresh_token=4610...; Path=/; HttpOnly; SameSite=Lax; Ma
 | `Path` | `/` | The cookies are sent on every path. |
 
 <Warning>
-  Because the cookies are `HttpOnly`, your application cannot read or store them itself. Browser clients should send requests with credentials included; server-side and CLI clients should persist and replay the `Set-Cookie` values.
+  Because the cookies are `HttpOnly`, your application cannot read or store them itself. Browser clients should send requests with credentials included; server-side and CLI clients should persist the `Set-Cookie` values and replay `omnistrate_token` as a `Cookie` header.
 </Warning>
 
 ## Sending the cookie
@@ -55,10 +66,17 @@ Other clients must store the cookies and send them back. With `curl`, use a cook
 
 ```bash
 curl -c cookies.txt -X POST \
-  https://api.omnistrate.cloud/2022-09-01-00/resource-instance/user/signin \
-  -u "$FALKORDB_EMAIL:$FALKORDB_PASSWORD"
+  https://app.falkordb.cloud/api/signin \
+  -H "Content-Type: application/json" \
+  -d '{"email": "'"$FALKORDB_EMAIL"'", "password": "'"$FALKORDB_PASSWORD"'"}'
+```
 
-curl -b cookies.txt https://api.omnistrate.cloud/...
+Because the cookies are scoped to `.falkordb.cloud`, `curl` does not replay them to `https://api.omnistrate.cloud`. Read `omnistrate_token` out of the cookie jar and send it as an explicit `Cookie` header instead:
+
+```bash
+TOKEN=$(awk '$6 == "omnistrate_token" { print $7 }' cookies.txt)
+
+curl -H "Cookie: omnistrate_token=$TOKEN" https://api.omnistrate.cloud/...
 ```
 
 ## Session lifetime
@@ -67,21 +85,15 @@ The session token is valid for 1 hour. After it expires, use the refresh token t
 
 ### Errors
 
-| Status | Name | Description |
-| --- | --- | --- |
-| 400 | `bad_request` | The request is malformed. |
-| 401 | `auth_failure` | The credentials are invalid. |
-| 500 | `failed_request` | The server failed to complete the sign-in. |
+| Status | Description |
+| --- | --- |
+| 400 | The body is malformed, or the email and password do not match an account. |
+| 500 | The server failed to complete the sign-in. |
 
-Error responses use the `application/vnd.goa.error` content type:
+Error responses are JSON with a single `message` field:
 
 ```json
 {
-  "name": "bad_request",
-  "id": "123abc",
-  "message": "parameter 'p' must be an integer",
-  "temporary": true,
-  "timeout": false,
-  "fault": false
+  "message": "Invalid request: wrong user email or password"
 }
 ```
