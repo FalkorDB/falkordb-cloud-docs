@@ -16,22 +16,30 @@ Before you begin, you need:
 
 <Steps>
   <Step title="Sign in">
-    Sign in with HTTP Basic authentication. The response sets the `omnistrate_token` session cookie that authorizes every other request, so store it in a cookie jar.
+    Sign in with your FalkorDB Cloud email and password. The response sets the `omnistrate_token` session cookie that authorizes every other request, so store it in a cookie jar.
 
     ```bash
     curl -s -c cookies.txt -X POST \
-      https://api.omnistrate.cloud/2022-09-01-00/resource-instance/user/signin \
-      -u "$FALKORDB_EMAIL:$FALKORDB_PASSWORD"
+      https://app.falkordb.cloud/api/signin \
+      -H "Content-Type: application/json" \
+      -d '{"email": "'"$FALKORDB_EMAIL"'", "password": "'"$FALKORDB_PASSWORD"'"}'
+    ```
+
+    The cookies are scoped to `.falkordb.cloud`, so `curl` does not replay them to `https://api.omnistrate.cloud`. Read the token out of the cookie jar and send it as an explicit `Cookie` header on the requests below.
+
+    ```bash
+    TOKEN=$(awk '$6 == "omnistrate_token" { print $7 }' cookies.txt)
     ```
 
     See [Sign in](/api-reference/authentication/signin) for the full reference. The session lasts 1 hour.
   </Step>
   <Step title="Create an instance">
-    Send a create request to the endpoint for your service tier and deployment component, replaying the cookie jar with `-b`. This example creates a Free instance.
+    Send a create request to the endpoint for your service tier and deployment component, passing the session token. This example creates a Free instance.
 
     ```bash
-    INSTANCE_ID=$(curl -s -b cookies.txt -X POST \
+    INSTANCE_ID=$(curl -s -X POST \
       "https://api.omnistrate.cloud/2022-09-01-00/resource-instance/sp-JvkxkPhinN/falkordb/v1/prod/falkordb-free-customer-hosted/falkordb-free-falkordb-customer-hosted-model-omnistrate-multi-tenancy/free" \
+      -H "Cookie: omnistrate_token=$TOKEN" \
       -H "Content-Type: application/json" \
       -d '{
         "cloud_provider": "aws",
@@ -48,8 +56,9 @@ Before you begin, you need:
     Instances are provisioned asynchronously. Poll the describe endpoint until `status` is `RUNNING`.
 
     ```bash
-    curl -s -b cookies.txt \
+    curl -s \
       "https://api.omnistrate.cloud/2022-09-01-00/resource-instance/sp-JvkxkPhinN/falkordb/v1/prod/falkordb-free-customer-hosted/falkordb-free-falkordb-customer-hosted-model-omnistrate-multi-tenancy/free/$INSTANCE_ID" \
+      -H "Cookie: omnistrate_token=$TOKEN" \
       | jq '{status, result_params}'
     ```
 

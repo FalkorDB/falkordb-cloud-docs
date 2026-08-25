@@ -13,6 +13,8 @@ https://api.omnistrate.cloud
 
 Every resource path is prefixed with `/2022-09-01-00/resource-instance/sp-JvkxkPhinN/falkordb/v1/prod/`, followed by the service tier, the deployment model, and the component.
 
+Sign-in is the exception: it is served from the FalkorDB Cloud app at `https://app.falkordb.cloud/api/signin`.
+
 ## Authentication
 
 All endpoints except sign-in are authenticated with a session cookie.
@@ -21,14 +23,14 @@ All endpoints except sign-in are authenticated with a session cookie.
 Cookie: omnistrate_token=<jwt>
 ```
 
-[Sign in](/api-reference/authentication/signin) with HTTP Basic authentication using your FalkorDB Cloud credentials. The response sets two `HttpOnly` cookies scoped to `.falkordb.cloud`:
+[Sign in](/api-reference/authentication/signin) at `https://app.falkordb.cloud/api/signin` with your FalkorDB Cloud email and password. The response sets two `HttpOnly` cookies scoped to `.falkordb.cloud`:
 
 | Cookie | Lifetime | Purpose |
 | --- | --- | --- |
 | `omnistrate_token` | 1 hour | Authorizes API requests. |
 | `omnistrate_refresh_token` | 24 hours | Obtains a new session token. |
 
-Browsers send the cookies automatically when requests include credentials. Server-side and CLI clients must store the `Set-Cookie` values and replay them on every request.
+Browsers send the cookies automatically when requests include credentials. Because the cookies are scoped to `.falkordb.cloud`, server-side and CLI clients must read `omnistrate_token` from the `Set-Cookie` values and send it as an explicit `Cookie` header on every request to `https://api.omnistrate.cloud`.
 
 ## Account management
 
