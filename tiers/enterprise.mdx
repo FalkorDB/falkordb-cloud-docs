@@ -18,16 +18,16 @@ The Enterprise Tier is fully optimized for mission-critical applications, provid
 | Graph Access Control | ✓ | ✓ | ✓ | **🟢** |
 | **TLS** | ✗ | ✓ | ✓ | **🟢** |
 | **VPC** | ✗ | ✗ | ✗ | **🟢** |
-| Cluster Deployment | ✗ | ✗ | ✓ | **🟢** |
+| Cluster Deployment | ✗ | ✗ | ✗ | **🟢** |
 | High Availability | ✗ | ✗ | ✓ | **🟢** |
 | Multi-zone Deployment | ✗ | ✗ | ✓ | **🟢** |
 | Scalability | ✗ | ✗ | ✓ | **🟢** |
 | Continuous Persistence | ✗ | ✗ | ✓ | **🟢** |
-| **Automated Backups** | ✗ | Every 12 Hours | Every 12 Hours | **Every Hour** |
+| **Automated Backups** | ✗ | Every 12 Hours | Every 12 Hours | **Every 2 Hours** |
 | **Advanced Monitoring** | ✗ | ✗ | ✗ | **🟢** |
 | **Support** | Community | Community | 24/7 | **Dedicated** |
 | **Dedicated Account Manager** | ✗ | ✗ | ✗ | **🟢** |
-| **Cloud Providers** | AWS, GCP, Azure | AWS, GCP, Azure | AWS, GCP, Azure | **AWS, GCP, Azure** |
+| **Cloud Providers** | AWS, GCP | AWS, GCP | AWS, GCP | **AWS, GCP, Azure** |
 
 ## Terms
 ### Consultation and Pricing
@@ -67,13 +67,13 @@ Enterprise customers receive **dedicated support**. Open a support ticket by ema
     Enterprise pricing is **custom** and based on your specific configuration of cores, memory, and additional enterprise components. [Contact our Sales Team](https://www.falkordb.com/get-a-demo/) for a tailored quote.
   </Accordion>
   <Accordion title="Is Azure available on the Enterprise Tier?">
-    Yes, the Enterprise Tier supports **AWS, GCP, and Azure** (via Bring-Your-Own-Cloud). This is the only tier that offers Azure deployment.
+    Yes. FalkorDB-hosted Enterprise instances can run on **AWS, GCP, or Azure**. It's the only tier that offers Azure. Enterprise BYOA, which runs in your own cloud account, is available on **AWS**.
   </Accordion>
   <Accordion title="What is VPC Peering and why does it matter?">
-    VPC Peering connects your FalkorDB instance to your private network, making it accessible only via private IPs. This eliminates public internet exposure and is critical for compliance-sensitive workloads.
+    VPC Peering connects your FalkorDB instance to your private network, making it accessible only via private IPs. This eliminates public internet exposure and is critical for compliance-sensitive workloads. See [Customer networks](/operations/customer-networks).
   </Accordion>
   <Accordion title="How often are automated backups taken?">
-    Enterprise Tier includes automated backups **every hour**, providing the highest backup frequency among all tiers. This minimizes potential data loss to under one hour.
+    Enterprise Tier includes automated backups **every 2 hours**, retained for 2 days. This is the highest backup frequency among all tiers. See [Backups and snapshots](/operations/backups-snapshots).
   </Accordion>
   <Accordion title="What support level is included?">
     Enterprise customers receive **dedicated support** with a **dedicated account manager**, priority response times, and tailored SLAs to meet your operational requirements.

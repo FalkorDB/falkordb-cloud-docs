@@ -3,7 +3,28 @@ title: "Monitoring Dashboard"
 description: "Guide to the FalkorDB Cloud Grafana monitoring dashboard. Learn what each panel shows and how to read it, including memory, commands, latency, system, and client metrics."
 ---
 
-FalkorDB Cloud ships with a Grafana monitoring dashboard that gives you a real-time view of how your instance is performing. This page explains what each panel shows and how to interpret what you see.
+FalkorDB Cloud ships with a Grafana monitoring dashboard that gives you a real-time view of how your instance is performing. This page explains how to open the dashboard, what each panel shows, and how to interpret what you see.
+
+## Open the dashboard
+
+The dashboard is available on the **Startup**, **Pro**, and **Enterprise** tiers. It isn't available on the Free tier or on Enterprise BYOA.
+
+1. Sign in to [app.falkordb.cloud](https://app.falkordb.cloud).
+2. Open **Deployments** > **Instances** and select your instance.
+3. Select the **Metrics** tab. The dashboard for that instance loads inside the page.
+
+{/* SCREENSHOT: images/console/metrics-tab.png — the instance page with the Metrics tab selected and the Grafana dashboard loaded (top stats row visible) */}
+
+Each instance has its own dashboard, and everyone on the subscription can view it. You're signed in to Grafana automatically with your FalkorDB Cloud account.
+
+### Find slow queries and logs
+
+- **Slow queries:** the **Slowlog** panel in the **Commands & Queries** row lists the last ten slow commands. See [Slowlog](#slowlog).
+- **Logs:** the **Logs (service container)** panel in the **Logs** row streams the FalkorDB server logs for the selected pod. See [Logs](#logs).
+
+Use the time picker in the top-right corner of the dashboard to look at an earlier period.
+
+{/* SCREENSHOT: images/console/metrics-slowlog-logs.png — the Slowlog table and the Logs panel */}
 
 ## Dashboard Variables
 

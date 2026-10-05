@@ -1,0 +1,63 @@
+---
+title: "Customer networks"
+description: "Create a customer network in FalkorDB Cloud to run Enterprise instances on a private network, and get the details you need to set up VPC peering."
+---
+
+A customer network is a dedicated private network (VPC) that FalkorDB Cloud creates for your instances. Instances in it have no public endpoint. Your applications reach them over VPC peering from your own cloud network.
+
+<Note>
+  Customer networks are available on the **Enterprise** tier. The **Customer Networks** page appears in the sidebar only when you have an Enterprise subscription.
+</Note>
+
+## Create a customer network
+
+1. In the sidebar, open **Deployments** > **Customer Networks**.
+2. Select **Create**.
+3. Fill in the form:
+   - **Name**: a name to help you find the network.
+   - **Cloud Provider**: the provider your instances will run on.
+   - **Region**: the region your instances will run in. It must match the region you choose for the instance.
+   - **CIDR**: the private IP range for the network, for example `10.10.0.0/16`.
+4. Select **Create**.
+
+{/* SCREENSHOT: images/console/create-customer-network.png — the Create Customer Network form with Name, Cloud Provider, Region and CIDR filled in */}
+
+<Warning>
+  Choose a CIDR range that doesn't overlap with the networks you plan to peer with. Overlapping ranges can't be peered. You can't change the CIDR after you create the network.
+</Warning>
+
+After you create it, you can change only the network's **Name**.
+
+## Use the network for an instance
+
+When you [create an instance](/console/create-instance):
+
+1. In **Network Configuration**, set **Network Type** to **Private**.
+2. Under **Customer Network ID**, choose your network. The list shows only networks in the cloud provider and region you selected.
+
+{/* SCREENSHOT: images/console/create-instance-private-network.png — the Network Configuration card with Network Type set to Private and a Customer Network ID selected */}
+
+## Set up VPC peering
+
+1. On the **Customer Networks** page, select your network.
+2. Select **Peering Info**. The dialog shows what you need to set up peering from your side, such as the FalkorDB account or project ID, the VPC details, and the CIDR.
+3. In your cloud provider's console, create a peering connection to that VPC, and accept or approve it as your provider requires.
+4. Add routes for the FalkorDB CIDR to your route tables, and allow traffic to the instance port (`6379`) in your security groups or firewall rules.
+
+{/* SCREENSHOT: images/console/peering-info.png — the Peering Info dialog for a ready network (mask the account IDs) */}
+
+If the dialog says peering information will be available once the setup is complete, the network is still being created. Check back after a few minutes.
+
+For help with peering, contact your account manager or [support@falkordb.com](mailto:support@falkordb.com).
+
+## Connect to a private instance
+
+Instances in a customer network show **Private** on the **Connectivity** tab. Connect to the endpoint from a machine inside your peered network. See [Connect to your instance](/console/connect).
+
+The **Connect** button for FalkorDB Browser is turned off for private instances, because the browser can't reach them.
+
+## Delete a customer network
+
+Delete the instances that use the network first. Then select the network, choose **Delete**, and type `deleteme` to confirm.
+
+To manage networks with the API, see [Custom networks](/api-reference/networking/list).

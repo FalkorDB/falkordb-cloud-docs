@@ -29,7 +29,9 @@ Organizations using GCP for their applications should deploy FalkorDB in the sam
 
 You select a GCP region during deployment, and FalkorDB sets up your graph database instance within Google's infrastructure.
 
-> Note: Microsoft Azure is currently available in a Bring-Your-Own-Cloud configuration
+<Note>
+  Microsoft Azure is available on the Enterprise tier. Enterprise BYOA (bring your own account) runs in your own AWS account.
+</Note>
 
 ## TLS
 
@@ -37,7 +39,7 @@ TLS (Transport Layer Security) encrypts all data transmitted between your applic
 
 Applications handling sensitive data must use TLS to protect information in transit. Without encryption, credentials, personal data, and business logic become vulnerable when traveling across networks.
 
-When you enable TLS, FalkorDB requires encrypted connections. Your application must configure its database client to use TLS, and all communication happens over secure channels.
+TLS is available on the Startup, Pro, and Enterprise tiers. You turn it on with **Enable TLS** when you create an instance, and you can't change it afterward. When TLS is on, FalkorDB requires encrypted connections. Your application must configure its database client to use TLS, and all communication happens over secure channels.
 
 ## VPC
 
@@ -45,7 +47,7 @@ A Virtual Private Cloud (VPC) creates an isolated network environment where your
 
 Organizations with security requirements need VPC deployment to control network access to their databases. VPCs prevent unauthorized connection attempts and give you granular control over which services can communicate with FalkorDB.
 
-You deploy FalkorDB into your existing VPC, and the database becomes accessible only through your private network. Your applications connect using private IP addresses instead of public endpoints.
+On the Enterprise tier, you create a [customer network](/operations/customer-networks) and peer it with your own VPC. Instances in that network have no public endpoint. Your applications connect using private IP addresses.
 
 ## Persistence
 
@@ -55,9 +57,11 @@ Any application storing important data requires persistence to maintain durabili
 
 FalkorDB persists data through regular snapshots and transaction logs. These mechanisms guarantee that committed transactions remain safe even if the system crashes immediately afterward.
 
+The Free tier has no persistence. Pro and Enterprise include continuous persistence (AOF + Snapshot).
+
 ## Graph Browser
 
-You can connect to the falkordb browser (integrated into your web browser) from the cloud console. The browser allows visualizing query results, allows you to traverse the graph and more. Multi Graph support is enabled by default in the browser which simplifies navigation and data management.
+FalkorDB Browser is a web UI for running queries, visualizing results, and exploring your graphs. Select **Connect** on a running instance in the console to open it with your connection details filled in. See [Connect to your instance](/console/connect).
 
 ## Solution Architecture
 
@@ -80,7 +84,7 @@ Architecture consultations provide recommendations on graph schema design, query
     VPC peering creates an isolated network where your FalkorDB instance is accessible only through private IP addresses. This is available on the **Enterprise tier** and prevents unauthorized access from the public internet.
   </Accordion>
   <Accordion title="Which cloud providers are supported?">
-    FalkorDB supports **AWS** and **GCP** for most tiers. **Microsoft Azure** is available through a Bring-Your-Own-Cloud (BYOC) configuration on the Enterprise tier.
+    FalkorDB supports **AWS** and **GCP** on every tier. **Microsoft Azure** is available on the Enterprise tier. Enterprise BYOA runs in your own **AWS** account.
   </Accordion>
   <Accordion title="How does FalkorDB handle data persistence?">
     FalkorDB persists data through regular snapshots and transaction logs. Pro and Enterprise tiers include **continuous persistence** (AOF + Snapshot), ensuring committed transactions survive crashes or restarts.
