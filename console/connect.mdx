@@ -8,14 +8,22 @@ To connect to an instance, you need its **endpoint** (host and port), a **userna
 ## Find your connection details
 
 1. In the sidebar, open **Deployments** > **Instances** and select your instance.
-2. Open the **Connectivity** tab. The **Primary** endpoint card shows the endpoint as `host:port`. Select the copy icon to copy it.
-3. Open the **Instance Details** tab. Under **Parameters**, find the FalkorDB user (by default `falkordb`) and whether TLS is enabled.
+2. Open the **Connectivity** tab. The **Endpoint** card shows the endpoint as `host:port`. Select the copy icon to copy it.
+3. Open the **Instance Details** tab. Under **Parameter**, find the **FalkorDB User** (by default `falkordb`) and the **FalkorDB Password**. Select **Show** to see the password, or the copy icon to copy it. On paid tiers, this section also shows whether TLS is enabled.
 
-{/* SCREENSHOT: images/console/connectivity-tab.png — the Connectivity tab with the Primary endpoint card and the copy icon highlighted */}
+<Frame>
+  ![The Connectivity tab with the Network Type, Availability zones, and the Endpoint card showing the host and port](/images/console/connectivity-tab.png)
+</Frame>
 
-{/* SCREENSHOT: images/console/instance-details-parameters.png — the Instance Details tab, Parameters section, showing the FalkorDB user and Enable TLS values */}
+<Frame>
+  ![The Instance Details tab with Instance Info and the Parameter section showing the FalkorDB User and the masked FalkorDB Password](/images/console/instance-details-parameters.png)
+</Frame>
 
-The password is the one you set when you created the instance. To use a different user, create one in the [User Access tab](/operations/user-management).
+<Note>
+  Use the port shown on the endpoint. It's often not the default `6379`.
+</Note>
+
+To use a different user, create one in the [User Access tab](/operations/user-management).
 
 <Note>
   The Connectivity tab appears only while the instance is running. Instances in a **Private** network have no public endpoint. Connect to them from inside your peered network. See [Customer networks](/operations/customer-networks).
@@ -39,7 +47,7 @@ To learn the Browser itself, see the [FalkorDB Browser guide](https://docs.falko
 
 ## Connect with redis-cli
 
-Replace the host, port, and password with your own values. Add `--tls` if the instance has TLS enabled.
+Replace `<host>`, `<port>`, and the password with the values from the console. Add `--tls` if the instance has TLS enabled.
 
 ```bash
 redis-cli -h <host> -p <port> --user falkordb --pass "$FALKORDB_PASSWORD" --tls \
@@ -48,7 +56,7 @@ redis-cli -h <host> -p <port> --user falkordb --pass "$FALKORDB_PASSWORD" --tls 
 
 ## Connect with a client library
 
-Each example connects to a TLS-enabled instance. For an instance without TLS, remove the TLS option.
+Each example connects to a TLS-enabled instance. For an instance without TLS, including every Free instance, remove the TLS option (`ssl=True` or `tls: true`).
 
 <CodeGroup>
 ```python Python
@@ -56,7 +64,7 @@ from falkordb import FalkorDB
 
 db = FalkorDB(
     host="<host>",
-    port=6379,
+    port=<port>,
     username="falkordb",
     password="<password>",
     ssl=True,
@@ -72,7 +80,7 @@ import { FalkorDB } from "falkordb";
 const db = await FalkorDB.connect({
   username: "falkordb",
   password: "<password>",
-  socket: { host: "<host>", port: 6379, tls: true },
+  socket: { host: "<host>", port: <port>, tls: true },
 });
 const graph = db.selectGraph("social");
 const result = await graph.query("MATCH (p:Person) RETURN p.name");

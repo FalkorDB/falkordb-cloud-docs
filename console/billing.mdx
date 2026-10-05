@@ -11,12 +11,16 @@ If a paid subscription has no payment method, the **Instances** page shows a ban
 
 1. In the sidebar, open **Account Management** > **Payment Settings**.
 2. Select **Add payment method**.
-3. Enter your card or bank details in the form.
+3. Enter your card details and country.
 4. Select **Save Payment Method**.
 
-{/* SCREENSHOT: images/console/payment-settings.png — the Payment Settings page with the "Saved payment methods" card and the Add payment method button */}
+<Frame>
+  ![The Payment Settings page with the Saved payment methods card and the Add payment method button](/images/console/payment-settings.png)
+</Frame>
 
-{/* SCREENSHOT: images/console/add-payment-method.png — the Add Payment Method dialog with the Stripe card form */}
+<Frame>
+  ![The Add Payment Method dialog with the card number, expiration date, security code, and country fields](/images/console/add-payment-method.png)
+</Frame>
 
 Payments are processed by Stripe. FalkorDB Cloud doesn't store your card details.
 
@@ -37,11 +41,13 @@ To remove a method, select its remove action and type `remove` to confirm.
 
 Open **Account Management** > **Billing** to see the **Billing & Invoices** page:
 
-- **Payment Summary** shows your outstanding balance and your default payment method. Select **Pay outstanding balance** to pay it now.
-- **Current Usage** shows what you've used so far in this billing period. Select **Show Usage Breakdown** for the details.
+- **Current Usage** shows what you've used so far this month: memory, storage, CPU, replicas, and more. Select **Show Usage Breakdown** for the details.
+- **Payment Summary** shows your **Outstanding Balance** and your **Default Payment Method**. Select **Pay outstanding balance** to pay it now, or **Add payment method** if you don't have one yet.
 - **Invoices** lists past invoices with their status, dates, and total amount.
 
-{/* SCREENSHOT: images/console/billing-invoices.png — the Billing & Invoices page with Payment Summary, Current Usage, and the Invoices table */}
+<Frame>
+  ![The Billing & Invoices page with Current Usage, Outstanding Balance, Default Payment Method, and the Invoices table](/images/console/billing-invoices.png)
+</Frame>
 
 For a breakdown of costs by instance over time, open **Account Management** > **Cost Explorer**.
 

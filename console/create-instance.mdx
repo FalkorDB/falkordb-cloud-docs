@@ -17,14 +17,18 @@ An instance is a running FalkorDB deployment. It can be a single node or a repli
   <Step title="Open the create form">
     In the sidebar, open **Deployments** > **Instances** and select **Create**. The **Create Deployment Instance** form opens.
 
-    {/* SCREENSHOT: images/console/instances-list.png — the Instances page with the toolbar (Stop, Start, Modify, Delete, Connect, Create) */}
+    <Frame>
+      ![The Deployment Instances page with the Stop, Start, Modify, Delete, Connect, Create, and Actions buttons](/images/console/instances-list.png)
+    </Frame>
   </Step>
   <Step title="Choose a plan">
     Under **Subscription Plan**, choose a tier: **FalkorDB Free**, **FalkorDB Startup**, **FalkorDB Pro**, **FalkorDB Enterprise**, or **FalkorDB Enterprise BYOA**. If you haven't subscribed to the plan yet, select **Subscribe** on its card.
 
     If you have more than one subscription to the plan, pick one under **Subscription**.
 
-    {/* SCREENSHOT: images/console/create-instance-plan.png — the Standard Information card with the subscription plan cards */}
+    <Frame>
+      ![The Standard Information card of the Create Deployment Instance form, with the subscription plan cards, Subscription, Cloud Provider, and Region](/images/console/create-instance-plan.png)
+    </Frame>
   </Step>
   <Step title="Choose a deployment type">
     Under **Resource Name**, choose how the instance is deployed. The list shows only the types your tier supports. Free and Startup instances are always Standalone, so the field doesn't appear for them.
@@ -43,7 +47,7 @@ An instance is a running FalkorDB deployment. It can be a single node or a repli
     Select the **Cloud Provider** logo (AWS or GCP, plus Azure on Enterprise), then choose a **Region**. Pick the region closest to your application to keep latency low.
   </Step>
   <Step title="Choose the network (Enterprise)">
-    If your plan supports private networking, the **Network Configuration** card appears:
+    On Enterprise plans, a **Network Configuration** card appears. Other plans don't show it, because their instances always use a public endpoint.
 
     - **Public** gives the instance a public endpoint.
     - **Private** places it in a customer network. Choose the network under **Customer Network ID**.
@@ -53,19 +57,23 @@ An instance is a running FalkorDB deployment. It can be a single node or a repli
   <Step title="Configure the database">
     Under **Deployment Configuration**, fill in:
 
-    - **Name**: a name to help you find the instance.
+    - **Name** and **Description**: help you find the instance later.
+    - **FalkorDB User**: the default username. It's set to `falkordb`.
+    - **FalkorDB Password**: the password for the default user. Use at least 6 characters.
+
+    Paid tiers show more fields:
+
     - **Memory** or instance size: how much RAM the instance has. See your tier page for sizes and prices.
-    - **FalkorDB user**: the default username. It's set to `falkordb`.
-    - **FalkorDB password**: the password for the default user. Use at least 6 characters.
-    - **Enable TLS** (Startup and above): encrypts connections to the instance. You can't change this after the instance is created.
+    - **Enable TLS**: encrypts connections to the instance. You can't change this after the instance is created.
+    - Persistence and FalkorDB tuning options. Their defaults work for most workloads.
 
-    The other settings, such as persistence and FalkorDB tuning options, have sensible defaults. You can leave them as they are.
+    <Frame>
+      ![The Deployment Configuration card for a Free instance with the Name, Description, FalkorDB User, and FalkorDB Password fields, next to the Deployment Instance Summary](/images/console/create-instance-config.png)
+    </Frame>
 
-    {/* SCREENSHOT: images/console/create-instance-config.png — the Deployment Configuration card with name, memory, user, password and Enable TLS fields, and the Deployment Instance Summary panel on the right */}
-
-    <Warning>
-      Store the password somewhere safe, such as a password manager. You need it every time you connect.
-    </Warning>
+    <Tip>
+      Store the password in a password manager. You can also view it later on the instance's **Instance Details** tab.
+    </Tip>
   </Step>
   <Step title="Create">
     Check the **Deployment Instance Summary** panel and select **Create**.
@@ -76,7 +84,7 @@ An instance is a running FalkorDB deployment. It can be a single node or a repli
 
 ## Check the status
 
-Your instance appears in the **Instances** list. Wait until its status is **Running**, then [connect to it](/console/connect).
+Your instance appears in the **Instances** list with the **Lifecycle Status** **Deploying**. Wait until it's **Running**, then [connect to it](/console/connect). While the instance deploys, its **Health Status** can show **Unhealthy**. That's expected.
 
 Select the instance name to open its detail page. The tabs on that page include:
 
@@ -87,6 +95,7 @@ Select the instance name to open its detail page. The tabs on that page include:
 | **Nodes** | Each node's endpoint, zone, and health |
 | **User Access** | Extra database users. See [User management](/operations/user-management). |
 | **Metrics** | The monitoring dashboard (not on Free). See [Monitoring dashboard](/operations/monitoring-dashboard). |
+| **Audit Logs** | Who changed the instance, and when |
 | **Backups** and **Snapshots** | Automatic backups and restores (Startup and above). See [Backups and snapshots](/operations/backups-snapshots). |
 | **Import/Export RDB** | Load or save your data as an RDB file. See [Export and import](/operations/export-import). |
 
