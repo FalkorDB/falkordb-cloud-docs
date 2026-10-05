@@ -26,16 +26,22 @@ Open your instance and select the **Backups** tab. **Backup Summary** shows:
 - **Retention duration**
 - **Recovery Point Objective** and **Recovery Time Objective**
 
-Below it is the list of completed backups.
+Below it is the **List of completed backups**, with each backup's status, region, times, and encryption status.
 
-{/* SCREENSHOT: images/console/backups-tab.png — the Backups tab with the Backup Summary and the list of completed backups */}
+<Frame>
+  ![The Backups tab with a completed, encrypted backup and the Filter by Date, Restore, and Create Snapshot buttons](/images/console/backups-tab.png)
+</Frame>
 
 ## Take a snapshot
 
 1. On the **Backups** tab, select **Create Snapshot**.
 2. Choose the **Target Region** for the snapshot and confirm.
 
-The snapshot appears on the instance's **Snapshots** tab and on the **Deployments** > **Instance Snapshots** page.
+The snapshot appears on the instance's **Snapshots** tab and on the **Deployments** > **Instance Snapshots** page. From the **Snapshots** tab you can **Restore**, **Copy**, or **Delete** a snapshot. Use **Filter by Date** to find one.
+
+<Frame>
+  ![The Snapshots tab with the Filter by Date, Delete, Restore, and Copy buttons](/images/console/snapshots-tab.png)
+</Frame>
 
 When you delete an instance, you can also select **Take final snapshot before deletion** to keep its data.
 
