@@ -19,7 +19,9 @@ To manage the same users programmatically, see the [Database users API](/api-ref
 
 The tab shows a table of all users configured on the instance, along with their assigned role or ACL rule.
 
-{/* SCREENSHOT: images/console/user-access-tab.png — the User Access tab with the Users table and the Add User button */}
+<Frame>
+  ![The User Access tab with the Users table showing the default falkordb user and the Add User button](/images/console/user-access-tab.png)
+</Frame>
 
 <Note>
   If you don't see the **User Access** tab, your instance was created on an older version of its tier. Contact [support@falkordb.com](mailto:support@falkordb.com) to have it upgraded.
@@ -27,7 +29,7 @@ The tab shows a table of all users configured on the instance, along with their 
 
 ## Default User
 
-Every instance has a **default user** that is created automatically during deployment. This user cannot be deleted — its credentials can only be changed by modifying the instance configuration.
+Every instance has a **default user** that is created automatically during deployment. It's marked with a star in the **Users** table. This user cannot be deleted — its credentials can only be changed by modifying the instance configuration.
 
 ## Creating a User
 
@@ -35,7 +37,7 @@ Every instance has a **default user** that is created automatically during deplo
 2. Fill in the required fields:
    - **Username** — the login name for the new user.
    - **Password** — a secure password for the user.
-3. Under **Role**, choose one of the built-in roles, or **Custom**:
+3. Under **Role**, choose one of the built-in roles, or **Custom**. The role starts as **Admin**, so change it if the user needs less access:
      - `Admin` — full read/write access and operations.
      - `Read` — read-only access to graphs.
      - `Write` — full read/write access to graphs.
@@ -52,7 +54,9 @@ Every instance has a **default user** that is created automatically during deplo
      See [ACL](https://docs.falkordb.com/commands/acl) for the rule syntax.
 4. Select **Create** to create the user.
 
-{/* SCREENSHOT: images/console/add-user-dialog.png — the Add User dialog with Username, Password and Role (Custom selected, showing Key Patterns and Commands) */}
+<Frame>
+  ![The Add User dialog with the Username, Password, and Role fields](/images/console/add-user-dialog.png)
+</Frame>
 
 ## Updating a User
 
