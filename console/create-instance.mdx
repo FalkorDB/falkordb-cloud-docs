@@ -44,10 +44,10 @@ An instance is a running FalkorDB deployment. It can be a single node or a repli
     You can't change the deployment type later. To move to another type, create a new instance and [import your data](/operations/export-import#another-instance).
   </Step>
   <Step title="Choose a cloud provider and region">
-    Select the **Cloud Provider** logo (AWS or GCP, plus Azure on Enterprise), then choose a **Region**. Pick the region closest to your application to keep latency low.
+    Select the **Cloud Provider** logo, then choose a **Region**. Free, Startup, and Pro run on AWS or GCP. Hosted Enterprise adds Azure. Enterprise BYOA runs in your own AWS account. Pick the region closest to your application to keep latency low.
   </Step>
   <Step title="Choose the network (Enterprise)">
-    On Enterprise plans, a **Network Configuration** card appears. Other plans don't show it, because their instances always use a public endpoint.
+    On hosted Enterprise plans, a **Network Configuration** card appears. Other plans don't show it, because their instances always use a public endpoint.
 
     - **Public** gives the instance a public endpoint.
     - **Private** places it in a customer network. Choose the network under **Customer Network ID**.
@@ -65,7 +65,13 @@ An instance is a running FalkorDB deployment. It can be a single node or a repli
 
     - **Memory** or instance size: how much RAM the instance has. See your tier page for sizes and prices.
     - **Enable TLS**: encrypts connections to the instance. You can't change this after the instance is created.
-    - Persistence and FalkorDB tuning options. Their defaults work for most workloads.
+    - Persistence and FalkorDB tuning options, such as **FalkorDB Cache Size** and **FalkorDB Result Set Size**. Their defaults work for most workloads.
+
+    You can't change **Enable TLS**, **FalkorDB User**, persistence, or the tuning options after the instance is created.
+
+    <Frame>
+      ![FalkorDB tuning options in the create form for a Startup instance, such as Cache Size, Max Queued Queries, Timeout, and Result Set Size](/images/console/create-instance-tuning.png)
+    </Frame>
 
     <Frame>
       ![The Deployment Configuration card for a Free instance with the Name, Description, FalkorDB User, and FalkorDB Password fields, next to the Deployment Instance Summary](/images/console/create-instance-config.png)
@@ -94,7 +100,7 @@ Select the instance name to open its detail page. The tabs on that page include:
 | **Connectivity** | The endpoint you connect to. See [Connect to your instance](/console/connect). |
 | **Nodes** | Each node's endpoint, zone, and health |
 | **User Access** | Extra database users. See [User management](/operations/user-management). |
-| **Metrics** | The monitoring dashboard (not on Free). See [Monitoring dashboard](/operations/monitoring-dashboard). |
+| **Metrics** | The monitoring dashboard (not on Free or Enterprise BYOA). See [Monitoring dashboard](/operations/monitoring-dashboard). |
 | **Audit Logs** | Who changed the instance, and when |
 | **Backups** and **Snapshots** | Automatic backups and restores (Startup and above). See [Backups and snapshots](/operations/backups-snapshots). |
 | **Import/Export RDB** | Load or save your data as an RDB file. See [Export and import](/operations/export-import). |
@@ -103,6 +109,6 @@ Select the instance name to open its detail page. The tabs on that page include:
 
 From the **Instances** list, select the instance and use the toolbar:
 
-- **Modify** changes the instance size. See [Upgrading instances](/operations/upgrading-instances).
-- **Stop** and **Start** pause and resume the instance. A stopped instance is removed after 14 days. See your tier page for details.
-- **Delete** removes the instance. Type `deleteme` to confirm. You can choose **Take final snapshot before deletion** to keep a copy of the data.
+- **Modify** changes the instance size, name, description, or FalkorDB password. See [Upgrading instances](/operations/upgrading-instances).
+- **Stop** and **Start** pause and resume the instance. On paid tiers, an instance that stays stopped is removed after 14 days. Free instances are stopped after 1 day without use and deleted after 7 days. See your tier page for details.
+- **Delete** removes the instance. Type `deleteme` to confirm. On paid tiers, you can choose **Take final snapshot before deletion** to keep a copy of the data.

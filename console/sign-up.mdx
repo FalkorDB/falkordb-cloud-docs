@@ -53,7 +53,7 @@ Plans marked **Auto Approval** (Free, Startup, and Pro) are active right away. P
 You can also subscribe while you create an instance. The plan cards in the **Create** form have the same **Subscribe** button. See [Create an instance](/console/create-instance).
 
 <Note>
-  Paid tiers need a payment method before instances can run. See [Add a payment method](/console/billing). The Free tier doesn't need one.
+  Paid tiers need a payment method before instances can run, unless your billing is arranged by contract, as it often is for Enterprise. See [Add a payment method](/console/billing). The Free tier doesn't need one.
 </Note>
 
 ## Invite your team
@@ -74,7 +74,11 @@ To invite someone:
 
 ## Unsubscribe
 
-On the **Subscriptions** page, select the subscription and choose **Unsubscribe**. Type `unsubscribe` to confirm. Only the **Root** user can unsubscribe, and you can't remove your default subscription.
+First delete every instance in the subscription; unsubscribing fails while any are left. Then, on the **Subscriptions** page, select the subscription, choose **Unsubscribe**, and type `unsubscribe` to confirm. Only the **Root** user can unsubscribe, and you can't remove your default subscription.
+
+<Warning>
+  Unsubscribing can't be undone. To use the plan again, you subscribe again.
+</Warning>
 
 ## Frequently asked questions
 

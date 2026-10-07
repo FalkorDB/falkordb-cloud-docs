@@ -54,7 +54,7 @@ To learn the Browser itself, see the [FalkorDB Browser guide](https://docs.falko
 Replace `<host>`, `<port>`, and the password with the values from the console. Add `--tls` if the instance has TLS enabled.
 
 ```bash
-redis-cli -h <host> -p <port> --user falkordb --pass "$FALKORDB_PASSWORD" --tls \
+redis-cli -h <host> -p <port> --user falkordb --pass "$FALKORDB_PASSWORD" \
   GRAPH.QUERY social "CREATE (:Person {name: 'Alice'}) RETURN 1"
 ```
 

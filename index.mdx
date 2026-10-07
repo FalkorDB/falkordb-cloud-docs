@@ -19,10 +19,10 @@ FalkorDB Cloud is the managed service for FalkorDB, the ultra-low-latency graph 
     Paid tiers need one. The Free tier doesn't. See [Add a payment method](/console/billing).
   </Step>
   <Step title="Create an instance">
-    Choose a tier, deployment type, cloud provider, and region. See [Create an instance](/console/create-instance).
+    Choose a tier, cloud provider, and region. If your tier offers more than one deployment type, choose one too. See [Create an instance](/console/create-instance).
   </Step>
   <Step title="Connect">
-    Copy the endpoint, or open FalkorDB Browser with one click. See [Connect to your instance](/console/connect).
+    For a public instance, copy the endpoint or open FalkorDB Browser with one click. For a private instance, connect from inside your peered network. See [Connect to your instance](/console/connect).
   </Step>
 </Steps>
 
@@ -54,16 +54,16 @@ FalkorDB Cloud is the managed service for FalkorDB, the ultra-low-latency graph 
 | Enterprise | Dedicated | FalkorDB-hosted, optionally in a private [customer network](/operations/customer-networks) | [Enterprise Tier](/tiers/enterprise) · [Demo](https://youtu.be/fu_8CLFKYSs) |
 | Enterprise BYOA | Dedicated | Your own AWS account | [Enterprise Tier](/tiers/enterprise) |
 
-Every tier includes multi-graph tenancy and graph access control. Higher tiers add TLS, high availability, clustering, automated backups, VPC peering, and dedicated support. See [Features](/features) for the full breakdown.
+Every tier includes multi-graph tenancy and graph access control. TLS and automated backups start at Startup. High availability and continuous persistence start at Pro. Clustering, private customer networks, and dedicated support are Enterprise features. See [Features](/features) for the full breakdown.
 
 ## Deployment components
 
 Each tier exposes the deployment components it supports:
 
 - **Standalone** — a single node.
-- **Single-Zone** (Pro and Enterprise) — a primary with replicas in one availability zone.
-- **Multi-Zone** (Pro and Enterprise) — a primary with replicas spread across availability zones.
-- **Cluster (Single-Zone)** and **Cluster (Multi-Zone)** (Enterprise) — sharded deployments for larger graphs.
+- **Single-Zone** (Pro, Enterprise, and Enterprise BYOA) — a primary with replicas in one availability zone.
+- **Multi-Zone** (Pro, Enterprise, and Enterprise BYOA) — a primary with replicas spread across availability zones.
+- **Cluster (Single-Zone)** and **Cluster (Multi-Zone)** (Enterprise and Enterprise BYOA) — sharded deployments for larger graphs.
 
 Free and Startup instances are Standalone.
 
@@ -83,10 +83,10 @@ The Free tier doesn't need billing information.
     Yes. On Startup, Pro, and Enterprise you can change an instance's size in place. To move to another tier or deployment type, create a new instance and import your data from the old one. See [Upgrading instances](/operations/upgrading-instances).
   </Accordion>
   <Accordion title="Do I need to set up billing before subscribing?">
-    Paid tiers need a payment method before their instances can run. See [Add a payment method](/console/billing). The Free tier doesn't need one.
+    No. You can subscribe first, but paid tiers need a payment method before their instances can run. See [Add a payment method](/console/billing). The Free tier doesn't need one.
   </Accordion>
   <Accordion title="What features are available across all tiers?">
-    Every tier includes **multi-graph tenancy** and **graph access control**. Higher tiers add TLS, high availability, clustering, automated backups, VPC peering, and dedicated support.
+    Every tier includes **multi-graph tenancy** and **graph access control**. TLS and automated backups start at Startup, high availability starts at Pro, and clustering, private networking, and dedicated support are Enterprise features.
   </Accordion>
   <Accordion title="Is there a free trial available?">
     Yes. The **Free tier** gives you a fully functional graph database instance with 100 MB of RAM on AWS or GCP, with no credit card required.

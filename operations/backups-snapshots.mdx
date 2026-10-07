@@ -3,7 +3,7 @@ title: "Backups and snapshots"
 description: "Review automatic backups, take snapshots, and restore a FalkorDB Cloud instance from a backup, a snapshot, or a point in time."
 ---
 
-FalkorDB Cloud backs up paid instances automatically. You can also take a snapshot at any time, and restore from either one. A restore creates a **new instance**, so your current instance keeps running.
+FalkorDB Cloud backs up Startup, Pro, and Enterprise instances automatically. On those tiers you can also take a snapshot at any time, and restore from either one. A restore creates a **new instance**, so your current instance keeps running.
 
 | Tier | Automatic backups | Kept for |
 | :--- | :--- | :--- |
@@ -13,6 +13,10 @@ FalkorDB Cloud backs up paid instances automatically. You can also take a snapsh
 | Enterprise | Every 2 hours | 2 days |
 
 Snapshots are kept for 14 days.
+
+<Note>
+  The Free tier has no backups or snapshots, so its instances don't have the **Backups** and **Snapshots** tabs. To keep a copy of Free data, [export an RDB file](/operations/export-import#export).
+</Note>
 
 <Tip>
   To keep a copy of your data for longer, or to move it somewhere else, [export an RDB file](/operations/export-import) to your own storage.
@@ -73,7 +77,7 @@ On the **Snapshots** tab or the **Instance Snapshots** page, select a snapshot, 
     No. Restoring a backup or snapshot creates a new instance. Your original instance isn't changed. To load data into an existing instance, use [Import RDB](/operations/export-import#import).
   </Accordion>
   <Accordion title="What's the difference between a backup, a snapshot, and an export?">
-    Backups are taken automatically on a schedule. Snapshots are taken when you ask, or when an instance is stopped for too long or deleted. Both stay inside FalkorDB Cloud. An export writes an RDB file to a download link or your own cloud storage, where you control how long it's kept.
+    Backups are taken automatically on a schedule. Snapshots are taken when you ask, when an instance stays stopped for too long, or when you choose **Take final snapshot before deletion**. Both stay inside FalkorDB Cloud. An export writes an RDB file to a download link or your own cloud storage, where you control how long it's kept.
   </Accordion>
   <Accordion title="Does the Free tier have backups?">
     No. The Free tier has no persistence and no backups. Use [Export RDB](/operations/export-import#export) to keep a copy of your data.

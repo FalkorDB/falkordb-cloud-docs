@@ -13,15 +13,12 @@ FalkorDB Cloud supports **in-tier** size changes on a running instance. Changing
 2. Select **Modify** in the toolbar, or in the instance's actions menu.
 3. Choose the new size and confirm.
 
-The same form also lets you change FalkorDB settings such as **FalkorDB Cache Size**, **FalkorDB Max Queued Queries**, the timeouts, and **FalkorDB Result Set Size**. See [Configuration](https://docs.falkordb.com/getting-started/configuration) for what each one does.
+The same form also lets you change the instance's **Name**, **Description**, and **FalkorDB Password**. TLS, the FalkorDB user, persistence, and the FalkorDB tuning options are set when the instance is created and can't be changed.
 
 <Frame>
   ![The Instances list with a running instance selected and the Modify button enabled](/images/console/modify-button.png)
 </Frame>
 
-<Frame>
-  ![FalkorDB settings in the Modify form, such as Cache Size, Max Queued Queries, Timeout, and Result Set Size](/images/console/modify-instance.png)
-</Frame>
 
 Changing the size may restart the instance. Plan the change for a time that tolerates a brief interruption, or use a Replication / Cluster deployment to minimize impact.
 

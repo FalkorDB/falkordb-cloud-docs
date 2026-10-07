@@ -47,7 +47,7 @@ A Virtual Private Cloud (VPC) creates an isolated network environment where your
 
 Organizations with security requirements need VPC deployment to control network access to their databases. VPCs prevent unauthorized connection attempts and give you granular control over which services can communicate with FalkorDB.
 
-On the Enterprise tier, you create a [customer network](/operations/customer-networks) and peer it with your own VPC. Instances in that network have no public endpoint. Your applications connect using private IP addresses.
+On the Enterprise tier, you create a [customer network](/operations/customer-networks) and request peering with your own network through a support ticket. Instances in that network have no public endpoint. Your applications connect using private IP addresses.
 
 ## Persistence
 
@@ -61,7 +61,7 @@ The Free tier has no persistence. Pro and Enterprise include continuous persiste
 
 ## Graph Browser
 
-FalkorDB Browser is a web UI for running queries, visualizing results, and exploring your graphs. Select **Connect** on a running instance in the console to open it with your connection details filled in. See [Connect to your instance](/console/connect).
+FalkorDB Browser is a web UI for running queries, visualizing results, and exploring your graphs. For a running instance with a public endpoint, select **Connect** in the console to open it with your connection details filled in. Private instances can't use **Connect**. See [Connect to your instance](/console/connect).
 
 ## Solution Architecture
 
@@ -81,7 +81,7 @@ Architecture consultations provide recommendations on graph schema design, query
     Yes, **TLS encryption** is available on Startup, Pro, and Enterprise tiers. TLS encrypts all communication between your application and FalkorDB, protecting queries and results from interception.
   </Accordion>
   <Accordion title="How does VPC peering work with FalkorDB?">
-    VPC peering creates an isolated network where your FalkorDB instance is accessible only through private IP addresses. This is available on the **Enterprise tier** and prevents unauthorized access from the public internet.
+    VPC peering creates an isolated network where your FalkorDB instance is accessible only through private IP addresses. This is available on the **Enterprise tier**, where you request it through a support ticket, and prevents unauthorized access from the public internet. See [Customer networks](/operations/customer-networks).
   </Accordion>
   <Accordion title="Which cloud providers are supported?">
     FalkorDB supports **AWS** and **GCP** on every tier. **Microsoft Azure** is available on the Enterprise tier. Enterprise BYOA runs in your own **AWS** account.
