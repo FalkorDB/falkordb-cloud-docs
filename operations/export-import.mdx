@@ -60,7 +60,7 @@ An import loads an RDB into your instance.
 
 ### Upload a file
 
-Upload an RDB file from your local machine.
+Upload an RDB file from your local machine. Uploads are limited to **2 GB**. For larger files, use a URL, cloud storage, or another instance as the source.
 
 ![Import RDB dialog with Upload file selected and the erase caution](/images/export-import/import-upload-file.png)
 
@@ -82,7 +82,7 @@ Read the RDB from your own Amazon S3 bucket. Provide the bucket name, the RDB fi
 
 ### Another instance
 
-Clone the data from another running FalkorDB Cloud instance. FalkorDB checks that the source data fits the destination before it starts.
+Choose **Instance** as the source and select the **Source instance**. FalkorDB clones the data from that running FalkorDB Cloud instance. FalkorDB checks that the source data fits the destination before it starts.
 
 ## Scheduled exports
 
@@ -113,6 +113,7 @@ The task list on the **Import/Export RDB** tab shows your past exports and impor
 | Schedule start minute | 0, 15, 30, or 45 |
 | Temporary download link validity | 1 hour |
 | Upload link validity | 1 hour |
+| Upload file size | Up to 2 GB |
 | Import size | Must fit the destination capacity |
 
 ## Getting Support
