@@ -30,6 +30,10 @@ Each instance has its own dashboard, and everyone on the subscription can view i
 
 Use the time picker in the top-right corner of the dashboard to look at an earlier period.
 
+<Frame>
+  ![The Slowlog panel in the Commands & Queries row, listing slow GRAPH.QUERY commands with their client, execution timestamp, and duration in seconds](/images/console/metrics-slowlog.png)
+</Frame>
+
 ## Dashboard Variables
 
 The controls at the top of the dashboard filter every panel. Most are pre-selected for your deployment and you can leave them as they are — the only ones you'll typically change are **pod** and **graph**.
@@ -157,7 +161,7 @@ The instantaneous rate of cumulative time spent per command (`irate(redis_comman
 Time spent divided by command count per command and pod, across all commands. This is the per-command average latency for the whole instance, complementing the graph-only latency panel.
 
 ### Slowlog
-A table of the last ten slow commands recorded by FalkorDB (`redis_slowlog_history_last_ten`). When latency panels spike, this is where you find the specific queries responsible so you can optimize them.
+A table of the last ten slow commands recorded by FalkorDB (`redis_slowlog_history_last_ten`). Each row shows the **Client**, the **Execution timestamp**, the **Command**, and its **Duration in seconds**. When latency panels spike, this is where you find the specific queries responsible so you can optimize them.
 
 ---
 
