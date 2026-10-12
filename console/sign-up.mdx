@@ -62,19 +62,20 @@ Subscriptions are shared through roles:
 
 | Role | What it can do |
 | :--- | :--- |
-| **Root** | Owns the subscription. Manages instances, users, and billing, and can unsubscribe. |
+| **Root** | Owns the subscription. Manages instances, users, and billing, and can unsubscribe. Each subscription has one Root, the person who subscribed, and the role can't be transferred to someone else. |
+| **Admin** | Manages the subscription and its instances, including inviting and removing users, and can unsubscribe. |
 | **Editor** | Creates, modifies, and deletes instances. |
 | **Reader** | Views instances and their details. |
 
 To invite someone:
 
 1. In the sidebar, open **Governance Hub** > **Access Control**.
-2. Under **Invite Users**, enter their email and choose the **Product**, **Subscription Plan**, and **Role**.
+2. Under **Invite Users**, enter their email and choose the **Product**, **Subscription Plan**, and **Role** (**Admin**, **Editor**, or **Reader**).
 3. Select **Send Invites**. Use **Add Another** to invite several people at once.
 
 ## Unsubscribe
 
-First delete every instance in the subscription; unsubscribing fails while any are left. Then, on the **Subscriptions** page, select the subscription, choose **Unsubscribe**, and type `unsubscribe` to confirm. Only the **Root** user can unsubscribe, and you can't remove your default subscription.
+First delete every instance in the subscription; unsubscribing fails while any are left. Then, on the **Subscriptions** page, select the subscription, choose **Unsubscribe**, and type `unsubscribe` to confirm. Only a **Root** or **Admin** user can unsubscribe, and you can't remove your default subscription.
 
 <Warning>
   Unsubscribing can't be undone. To use the plan again, you subscribe again.

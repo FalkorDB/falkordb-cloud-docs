@@ -17,7 +17,7 @@ A customer network is a dedicated private network that FalkorDB Cloud creates fo
    - **Name**: a name to help you find the network.
    - **Cloud Provider**: the provider your instances will run on.
    - **Region**: the region your instances will run in. It must match the region you choose for the instance.
-   - **CIDR**: the private IP range for the network, for example `10.0.0.0/20`.
+   - **CIDR**: the private IP range for the network. It must be a `/20` block or larger, for example `10.0.0.0/20` or `10.0.0.0/16`. Smaller blocks, such as `/24`, aren't supported.
    - **Create for a shared subscription**: turn this on only to create the network for a subscription someone else shared with you. The subscription owner can then see and use it.
 4. Check the **Customer Network Summary** and select **Create**.
 
