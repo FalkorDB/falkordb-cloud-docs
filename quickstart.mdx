@@ -3,7 +3,7 @@ title: "Quickstart"
 description: "Create your first FalkorDB Cloud instance with the API"
 ---
 
-This guide takes you from credentials to a running FalkorDB instance using the API.
+This guide takes you from credentials to a running FalkorDB instance using the API. To do the same in the console, see [Create an instance](/console/create-instance).
 
 ## Prerequisites
 
@@ -65,7 +65,7 @@ Before you begin, you need:
     The `result_params` object contains the hostname and port you connect to.
   </Step>
   <Step title="Connect">
-    Use the returned endpoint with any FalkorDB client.
+    Use the returned endpoint with any FalkorDB client. Free instances don't use TLS. On other tiers, add `--tls` if you created the instance with TLS enabled.
 
     ```bash
     redis-cli -h <hostname> -p <port> --user falkordb --pass "$FALKORDB_DB_PASSWORD" \
@@ -80,9 +80,10 @@ Before you begin, you need:
 
 ## Next steps
 
+- Learn more ways to connect in [Connect to your instance](/console/connect).
 - Browse the [API reference](/api-reference/introduction) for every tier and component.
 - Review the [shared schemas](/api-reference/schemas) for request and response shapes.
 
 <Tip>
-  Need help? Reach out at [contact@falkordb.com](mailto:contact@falkordb.com).
+  Need help? Reach out at [support@falkordb.com](mailto:support@falkordb.com).
 </Tip>

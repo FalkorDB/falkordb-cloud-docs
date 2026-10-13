@@ -55,6 +55,15 @@
                 ]
               },
               {
+                "group": "Using the console",
+                "pages": [
+                  "console/sign-up",
+                  "console/billing",
+                  "console/create-instance",
+                  "console/connect"
+                ]
+              },
+              {
                 "group": "Service tiers",
                 "pages": [
                   "tiers/free",
@@ -66,10 +75,12 @@
               {
                 "group": "Operations",
                 "pages": [
+                  "operations/backups-snapshots",
                   "operations/export-import",
                   "operations/upgrading-instances",
                   "operations/user-management",
                   "operations/monitoring-dashboard",
+                  "operations/customer-networks",
                   "operations/maintenance-windows"
                 ]
               }

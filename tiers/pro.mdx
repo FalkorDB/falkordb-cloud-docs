@@ -1,13 +1,13 @@
 ---
 title: "Pro Tier"
-description: "FalkorDB Cloud Pro Tier starting at $350/month with high availability, multi-zone deployment, cluster support, continuous persistence, and 24/7 dedicated support for production workloads."
+description: "FalkorDB Cloud Pro Tier starting at $350/month with high availability, multi-zone deployment, continuous persistence, and 24/7 support for production workloads."
 ---
 
 ![FalkorDB Cloud Pro Tier Banner](https://github.com/user-attachments/assets/2d39df96-f932-4cba-a124-bfff93f9a0ca)
 
-FalkorDB's **Pro Tier** is your solution for high-performance, production-ready graph database workloads, starting at **$350/Month**. This tier is designed for applications requiring **High Availability (HA)**, **Multi-zone Deployment**, and robust **Scalability**. It includes essential infrastructure features like **Cluster Deployment** and **Continuous Persistence (AOF + Snapshot)**, backed by **24-hour Dedicated Support**.
+FalkorDB's **Pro Tier** is your solution for high-performance, production-ready graph database workloads, starting at **$350/Month**. This tier is designed for applications requiring **High Availability (HA)**, **Multi-zone Deployment**, and robust **Scalability**. It includes **Replicated (Single-Zone and Multi-Zone) deployments** and **Continuous Persistence (AOF + Snapshot)**, backed by **24/7 Support**.
 
-The Pro Tier provides a robust environment to scale your application with confidence. When your needs extend to features like VPC Peering, Advanced Monitoring, or a Dedicated Account Manager, you can easily upgrade to the Enterprise plan.
+The Pro Tier provides a robust environment to scale your application with confidence. When your needs extend to features like Cluster Deployment, VPC Peering, Advanced Monitoring, or a Dedicated Account Manager, you can upgrade to the Enterprise plan.
 
 ## FalkorDB Pricing Plans Comparison
 
@@ -18,16 +18,16 @@ The Pro Tier provides a robust environment to scale your application with confid
 | Graph Access Control | ✓ | ✓ | **🟢** | ✓ |
 | **TLS** | ✗ | ✓ | **🟢** | ✓ |
 | VPC | ✗ | ✗ | **🔴** | ✓ |
-| Cluster Deployment | ✗ | ✗ | **🟢** | ✓ |
+| Cluster Deployment | ✗ | ✗ | **🔴** | ✓ |
 | High Availability | ✗ | ✗ | **🟢** | ✓ |
 | Multi-zone Deployment | ✗ | ✗ | **🟢** | ✓ |
 | Scalability | ✗ | ✗ | **🟢** | ✓ |
 | Continuous Persistence | ✗ | ✗ | **🟢** | ✓ |
-| **Automated Backups** | ✗ | Every 12 Hours | **Every 12 Hours** | Every Hour |
+| **Automated Backups** | ✗ | Every 12 Hours | **Every 12 Hours** | Every 2 Hours |
 | Advanced Monitoring | ✗ | ✗ | **🔴** | ✓ |
 | **Support** | Community | Community | **24/7** | Dedicated |
 | Dedicated Account Manager | ✗ | ✗ | **🔴** | ✓ |
-| **Cloud Providers** | AWS, GCP | AWS, GCP | **AWS, GCP** | AWS, GCP, Azure (BYOC) |
+| **Cloud Providers** | AWS, GCP | AWS, GCP | **AWS, GCP** | AWS, GCP, Azure |
 | **Get started** | [Sign up](https://app.falkordb.cloud/signup) | [Sign up](https://app.falkordb.cloud/signup) | [Sign up](https://app.falkordb.cloud/signup) | [Contact Us](mailto:info@falkordb.com) |
 
 ## Terms
@@ -74,7 +74,7 @@ The Pro Tier provides a robust environment to scale your application with confid
 | 16 | 32 | 24 | \$7.460/hr | \$5,445.80 |
 | 32 | 64 | 48 | \$14.500/hr | \$10,585.00 |
 
-> Note: In the Replicated table, **Cores** and **Memory (GB)** are per instance. **Max Graph Dataset (GB)** is calculated as 2 GB for 4 GB containers and 75% of memory for containers larger than 4 GB. We charge an additional 2 cores and 2 GB for replication and cluster since they require an extra component (sentinel for replication and rebalancer for cluster).
+> Note: In the Replicated table, **Cores** and **Memory (GB)** are per instance. **Max Graph Dataset (GB)** is calculated as 2 GB for 4 GB containers and 75% of memory for containers larger than 4 GB. We charge an additional 2 cores and 2 GB for replication since it requires an extra component (sentinel).
 
 > Use our **[graph size calculator](https://www.falkordb.com/graph-database-graph-size-calculator/)** to further estimate your cost.
 > ⚠️ Prices are subject to change
@@ -113,8 +113,8 @@ Pro Tier customers receive **24/7 support**. Open a support ticket by emailing *
   <Accordion title="What is continuous persistence?">
     Continuous persistence combines **AOF (Append-Only File) and Snapshots** to minimize data loss. With the default `appendfsync everysec` policy, at most ~1 second of writes may be lost during an unexpected crash. This provides strong durability without significant performance overhead.
   </Accordion>
-  <Accordion title="Does the Pro Tier include dedicated support?">
-    Yes, the Pro Tier includes **24/7 dedicated support**. For a dedicated account manager, you would need to upgrade to the Enterprise tier.
+  <Accordion title="What support does the Pro Tier include?">
+    The Pro Tier includes **24/7 support**. Dedicated support and a dedicated account manager are part of the Enterprise tier.
   </Accordion>
   <Accordion title="Can I deploy across multiple availability zones?">
     Yes, the Pro Tier supports **multi-zone deployment**, distributing your database across multiple availability zones for resilience against zone-level failures on AWS or GCP.
