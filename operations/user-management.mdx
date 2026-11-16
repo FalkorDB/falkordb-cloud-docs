@@ -9,6 +9,10 @@ FalkorDB Cloud lets you manage database users directly from the instance page. Y
 
 > **Prerequisite:** The instance must be in a **running** state before you can manage its users.
 
+<Warning>
+  User management is not supported on **Replication** deployments, which use Sentinel. You can't add, update, or delete database users on these instances.
+</Warning>
+
 To manage the same users programmatically, see the [Database users API](/api-reference/database-users/overview).
 
 ## Opening the User Access Tab
@@ -85,6 +89,9 @@ Every instance has a **default user** that is created automatically during deplo
   </Accordion>
   <Accordion title="Does the instance need to be running to manage users?">
     Yes. The instance must be in a **running** state before you can open the User Access tab and make changes.
+  </Accordion>
+  <Accordion title="Can I manage users on a Replication deployment?">
+    No. User management is not supported on **Replication** deployments, which use Sentinel.
   </Accordion>
   <Accordion title="Can I change a user's password after creation?">
     Yes. Click the **Edit** icon next to the user in the User Access tab, enter a new password, and select **Update**.
